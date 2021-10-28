@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.service.wiz"
+version="1.0.0"
+name="Kodi WiZ Plugin"
+provider-name="Mihau">
+<requires>
+  <import addon="xbmc.python" version="3.0.0"/>
+</requires>
+<extension point="xbmc.service" library="main.py" />
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Kodi WiZ Plugin</summary>
+  <description lang="en_GB">It turns your light on when pasuing/stopping and off when playing.</description>
+  <disclaimer lang="en_GB">Just substitute the ip in script.</disclaimer>
+  <news>Updated with latest artwork metadata</news>
+</extension>
+</addon>
