@@ -1,5 +1,5 @@
 import xbmc
-import socket
+import requests
 
 class XBMCPlayer( xbmc.Player ):
 
@@ -9,33 +9,27 @@ class XBMCPlayer( xbmc.Player ):
 
     def onAVStarted(self):
         xbmc.log('Kodi WiZ onAVStarted')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":false}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'playing'})
 
     def onPlayBackStarted( self ):
         xbmc.log('Kodi WiZ playbackStarted')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":false}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'playing'})
 
     def onPlayBackEnded( self ):
         xbmc.log('Kodi WiZ playbackEnded')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":true,\"dimming\":10}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'playing'})
 
     def onPlayBackStopped( self ):
         xbmc.log('Kodi WiZ playbackStopped')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":true,\"dimming\":10}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'stopped'})
 
     def onPlayBackPaused(self):
         xbmc.log('Kodi WiZ playbackPaused')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":true,\"dimming\":10}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'paused'})
 
     def onPlayBackResumed(self):
         xbmc.log('Kodi WiZ playbackResumed')
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(bytes("{\"method\":\"setPilot\",\"params\":{\"state\":false}}", "utf-8"), ("ip", 38899))
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'playing'})
 
 player = XBMCPlayer()
 monitor = xbmc.Monitor()
