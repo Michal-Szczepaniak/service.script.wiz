@@ -17,7 +17,7 @@ class XBMCPlayer( xbmc.Player ):
 
     def onPlayBackEnded( self ):
         xbmc.log('Kodi WiZ playbackEnded')
-        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'playing'})
+        requests.post('http://proxy.serv:43201/properties', json={'property': 'playback', 'property_id': 'htpc', 'key': 'state', 'type': 'string', 'value': 'stopped'})
 
     def onPlayBackStopped( self ):
         xbmc.log('Kodi WiZ playbackStopped')
